@@ -29,9 +29,10 @@
             --text-primary: #ffffff;
             --text-secondary: #94a3b8;
             --accent-glow: #00ff88;
-            --font-main: 'Outfit', sans-serif;
+            --font-main: -apple-system, BlinkMacSystemFont, 'Outfit', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
             --glass-border: rgba(255, 255, 255, 0.08);
             --safe-top: env(safe-area-inset-top);
+            --safe-bottom: env(safe-area-inset-bottom);
         }
 
         * {
@@ -39,6 +40,20 @@
             -webkit-tap-highlight-color: transparent;
             user-select: none;
             -webkit-user-select: none;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Hide Scrollbar */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        html,
+        body {
+            overscroll-behavior-y: none;
+            /* Prevent pull-to-refresh */
+            height: 100%;
         }
 
         body {
@@ -62,34 +77,40 @@
         .container {
             width: 100%;
             max-width: 680px;
-            padding: calc(4rem + var(--safe-top)) 1.25rem 4rem;
+            padding: calc(3rem + var(--safe-top)) 1.25rem calc(6rem + var(--safe-bottom));
             display: flex;
             flex-direction: column;
             align-items: center;
+            height: 100%;
+            overflow-y: auto;
+            /* Internal scroll */
+            -webkit-overflow-scrolling: touch;
         }
 
-        /* PWA Install Button */
+        /* PWA Install Button - Native Floating Pill */
         #pwa-install {
             position: fixed;
-            bottom: 2rem;
+            bottom: calc(2rem + var(--safe-bottom));
             left: 50%;
             transform: translateX(-50%) translateY(100px);
-            background: rgba(0, 255, 136, 0.15);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(0, 255, 136, 0.4);
+            background: rgba(20, 20, 20, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: #fff;
-            padding: 0.8rem 1.5rem;
+            padding: 0.9rem 2rem;
             border-radius: 50px;
             font-weight: 600;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            font-size: 0.95rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
             cursor: pointer;
-            z-index: 1000;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 9999;
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             opacity: 0;
+            white-space: nowrap;
         }
 
         #pwa-install.visible {
@@ -98,7 +119,8 @@
         }
 
         #pwa-install:active {
-            transform: translateX(-50%) scale(0.95);
+            transform: translateX(-50%) scale(0.92);
+            background: rgba(40, 40, 40, 0.9);
         }
 
         /* ... existing styles ... */
@@ -297,9 +319,6 @@
                 font-size: 2rem;
             }
 
-            .container {
-                padding: 3rem 1rem;
-            }
 
             h1 {
                 font-size: 1.85rem;
