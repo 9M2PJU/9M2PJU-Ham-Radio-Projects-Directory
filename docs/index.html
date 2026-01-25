@@ -20,6 +20,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 
+    <link rel="manifest" href="manifest.json">
     <style>
         :root {
             --bg-color: #05070a;
@@ -66,6 +67,42 @@
             flex-direction: column;
             align-items: center;
         }
+
+        /* PWA Install Button */
+        #pwa-install {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: rgba(0, 255, 136, 0.15);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 255, 136, 0.4);
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0;
+        }
+
+        #pwa-install.visible {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        #pwa-install:active {
+            transform: translateX(-50%) scale(0.95);
+        }
+
+        /* ... existing styles ... */
+
 
         @media (max-width: 680px) {
             .container {
@@ -300,7 +337,63 @@
         </footer>
     </div>
 
+    <button id="pwa-install">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        Install App
+    </button>
+
     <script>
+        // PWA Logic
+        let deferredPrompt;
+        const installBtn = document.getElementById('pwa-install');
+        const PWA_SESSION_KEY = 'pwa_prompt_dismissed_session';
+
+        // Check if user has dismissed it in this session
+        const isDismissed = sessionStorage.getItem(PWA_SESSION_KEY);
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('SW registred'))
+                    .catch(err => console.log('SW failed', err));
+            });
+        }
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+
+            if (!isDismissed) {
+                showInstallPromotion();
+            }
+        });
+
+        function showInstallPromotion() {
+            installBtn.classList.add('visible');
+        }
+
+        installBtn.addEventListener('click', async () => {
+            // Hide the app provided install promotion
+            installBtn.classList.remove('visible');
+
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                deferredPrompt = null;
+
+                if (outcome === 'dismissed') {
+                    // User dismissed, save to session so we prompt again next time they open the page (new session)
+                    console.log('User dismissed install');
+                    sessionStorage.setItem(PWA_SESSION_KEY, 'true');
+                }
+            }
+        });
+
         const categories = [
             {
                 title: "Ham Radio Tools",
