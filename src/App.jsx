@@ -42,6 +42,31 @@ const categories = [
             { title: 'KWSP Calculator', url: 'https://kwsp.hamradio.my/' },
             { title: 'ASB Calculator', url: 'https://asb.hamradio.my/' },
         ]
+    },
+    {
+        title: "Google Chrome Extensions",
+        links: [
+            { title: 'Malaysian Ham Radio Tools', url: 'https://chromewebstore.google.com/detail/9m2pju-malaysian-ham-radi/gaolajlihkofgljhjlpobjohahplbhnk' },
+            { title: 'APRS Pass Code Generator', url: 'https://chromewebstore.google.com/detail/9m2pju-aprs-pass-code-gen/gidcnciejkdcjkhcejggjhogecagcffk' },
+            { title: 'Watt to dBm Converter', url: 'https://chromewebstore.google.com/detail/9m2pju-watt-to-dbm-conver/oiknjnppkcdioljeockiedejopooilgh' },
+            { title: 'Ohm\'s Law Calculator', url: 'https://chromewebstore.google.com/detail/9m2pju-ohms-law-calculato/gjmpmmhkgfmfffpecbikccmfleenaico' },
+            { title: 'Grid Locator Finder', url: 'https://chromewebstore.google.com/detail/9m2pju-grid-locator-finde/opocamnikdeoebpcbogdknbghccmjkph' },
+            { title: 'Dipole Antenna Calculator', url: 'https://chromewebstore.google.com/detail/9m2pju-dipole-antenna-cal/iklplamejpfkgieblpaclaabiejnbafe' },
+            { title: 'Resonance Calculator', url: 'https://chromewebstore.google.com/detail/9m2pju-resonance-calculat/fokgpfondiefjnphpgahkajlfcabfofk' },
+            { title: 'IPv4 Calculator', url: 'https://chromewebstore.google.com/detail/9m2pju-ipv4-calculator/ijljnlkjnobaneiemneankjnlbecblaf' },
+            { title: 'Classic Cipher Tools', url: 'https://chromewebstore.google.com/detail/9m2pju-classic-cipher-too/pmbbopgijiifidlifmdndfccfkoiaeki' },
+            { title: 'Mils to Degrees Converter', url: 'https://chromewebstore.google.com/detail/9m2pju-mils-to-degrees-co/phcpaolmkeecaifbhgfchpdoohabkiok' },
+            { title: 'Islamic Prayer Times', url: 'https://chromewebstore.google.com/detail/9m2pju-islamic-prayer-tim/adkbafocihfgahcljfojhiijnfooaijd' },
+            { title: 'Easy Recipe Finder', url: 'https://chromewebstore.google.com/detail/9m2pju-easy-recipe-finder/bhbbdfnfhbclpbnejnbphjacfbmdhfgg' },
+            { title: 'Drain Calculator', url: 'https://chromewebstore.google.com/detail/9m2pju-drain-calculator/igcgilmlfmlkoihniaanfalhmafdfmci' },
+            { title: 'SWR Calculator', url: 'https://chromewebstore.google.com/detail/9m2pju-swr-calculator/khjenibbecohckjgdaiiahjnfaiofbnh' },
+            { title: 'Quran Verse of the Day', url: 'https://chromewebstore.google.com/detail/9m2pju-quran-verse-of-the/bmneghcpmfbjljfmikhalmkhdfdjikgf' },
+            { title: 'Enigma Machine Simulator', url: 'https://chromewebstore.google.com/detail/9m2pju-enigma-machine-sim/oenollebibdpomcdjekihmdmhhkacgmn' },
+            { title: 'Recharge Calculator', url: 'https://chromewebstore.google.com/detail/9m2pju-recharge-calculato/ecjhheflpcnadmkoicfboeghjffafpmj' },
+            { title: 'Malaysia Electricity Bill', url: 'https://chromewebstore.google.com/detail/9m2pju-malaysia-electrici/boicnijdhffipkkhnmpaeilhdpjhjfda' },
+            { title: 'Text to Morse Code', url: 'https://chromewebstore.google.com/detail/9m2pju-text-to-morse-code/lnhebbefphjolddankpehdeaibiimaei' },
+            { title: 'RSA Key Generator', url: 'https://chromewebstore.google.com/detail/9m2pju-rsa-key-generator/ackoegabgdkgooogibcbbfjncfbjlheg' },
+        ]
     }
 ];
 
