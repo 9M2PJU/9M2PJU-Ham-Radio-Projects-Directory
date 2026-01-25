@@ -1,20 +1,368 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>9M2PJU Projects</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/assets/index-DxW_6H5O.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-CFGc_A4-.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9M2PJU Projects</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #05070a;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-hover: rgba(255, 255, 255, 0.08);
+            --text-primary: #ffffff;
+            --text-secondary: #a3a3a3;
+            --accent-glow: #00ff88;
+            --font-main: 'Outfit', sans-serif;
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 90% 30%, rgba(168, 85, 247, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 10% 70%, rgba(236, 72, 153, 0.1) 0%, transparent 40%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+            padding: 4rem 1.5rem;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInDown 0.8s forwards;
+        }
+
+        @keyframes fadeInDown {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            background-image: url('favicon.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            filter: drop-shadow(0 0 15px rgba(0, 255, 136, 0.3));
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 0 0 0.5rem;
+            background: linear-gradient(to right, #ffffff, #888888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .category-section {
+            width: 100%;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+            padding-left: 0.75rem;
+            border-left: 3px solid var(--accent-glow);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .links-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .link-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 1.75rem;
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            text-decoration: none;
+            color: var(--text-primary);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-card:hover {
+            background: var(--card-hover);
+            border-color: rgba(0, 255, 136, 0.4);
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 255, 136, 0.1);
+        }
+
+        .link-card:active {
+            transform: scale(0.98);
+        }
+
+        .link-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .link-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            letter-spacing: 0.2px;
+        }
+
+        .link-url {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .link-arrow {
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+            color: var(--accent-glow);
+        }
+
+        .link-card:hover .link-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        footer {
+            margin-top: 4rem;
+            padding-bottom: 4rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* Animations for each section stagger */
+        .category-section:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .category-section:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .category-section:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .category-section:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .category-section:nth-child(6) {
+            animation-delay: 0.5s;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 3rem 1rem;
+            }
+
+            .link-card {
+                padding: 1rem 1.25rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <div id="root"></div>
+
+    <div class="container">
+        <header class="header">
+            <div class="logo-container"></div>
+            <h1>9M2PJU Projects</h1>
+            <p class="description">Ham Radio Tools & Ecosystem</p>
+        </header>
+
+        <div id="content">
+            <!-- Dynamic content will go here for easy management but SEO friendly -->
+        </div>
+
+        <footer>
+            <p>&copy; 2026 9M2PJU. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        const categories = [
+            {
+                title: "Ham Radio Tools",
+                links: [
+                    { title: 'HAM Radio Callbook', url: 'https://callbook.hamradio.my/login' },
+                    { title: 'Callsign Search', url: 'https://callsign.hamradio.my/' },
+                    { title: 'DX Cluster', url: 'https://dx.hamradio.my/' },
+                    { title: 'Dashboard', url: 'https://dashboard.hamradio.my/' },
+                    { title: 'Calendar', url: 'https://calendar.hamradio.my/' },
+                    { title: 'Clock', url: 'https://clock.hamradio.my/live.html' },
+                    { title: 'Setpad', url: 'https://setpad.hamradio.my/' },
+                    { title: 'Pass', url: 'https://pass.hamradio.my/' },
+                ]
+            },
+            {
+                title: "Maps & Signal Analysis",
+                links: [
+                    { title: 'Coverage Map', url: 'https://coverage.hamradio.my/' },
+                    { title: 'Line of Sight', url: 'https://los.hamradio.my/' },
+                    { title: 'QSO Map', url: 'https://qsomap.hamradio.my/' },
+                    { title: 'Antenna Calculator', url: 'https://antenna.hamradio.my' },
+                    { title: 'APRS Visualization', url: 'https://pjuwebaprs.hamradio.my/' },
+                    { title: 'Frequency', url: 'https://frequency.hamradio.my/' },
+                ]
+            },
+            {
+                title: "Activities",
+                links: [
+                    { title: 'SOTA', url: 'https://sota.hamradio.my/' },
+                    { title: '9M BOTA', url: 'https://9mbota.hamradio.my/' },
+                ]
+            },
+            {
+                title: "Financial Tools",
+                links: [
+                    { title: 'Zakat Calculator', url: 'https://zakat.hamradio.my/' },
+                    { title: 'Mortgage Calculator', url: 'https://mortgage.hamradio.my/' },
+                    { title: 'KWSP Calculator', url: 'https://kwsp.hamradio.my/' },
+                    { title: 'ASB Calculator', url: 'https://asb.hamradio.my/' },
+                ]
+            },
+            {
+                title: "Google Chrome Extensions",
+                links: [
+                    { title: 'Malaysian Ham Radio Tools', url: 'https://chromewebstore.google.com/detail/9m2pju-malaysian-ham-radi/gaolajlihkofgljhjlpobjohahplbhnk' },
+                    { title: 'APRS Pass Code Generator', url: 'https://chromewebstore.google.com/detail/9m2pju-aprs-pass-code-gen/gidcnciejkdcjkhcejggjhogecagcffk' },
+                    { title: 'Watt to dBm Converter', url: 'https://chromewebstore.google.com/detail/9m2pju-watt-to-dbm-conver/oiknjnppkcdioljeockiedejopooilgh' },
+                    { title: 'Ohm\'s Law Calculator', url: 'https://chromewebstore.google.com/detail/9m2pju-ohms-law-calculato/gjmpmmhkgfmfffpecbikccmfleenaico' },
+                    { title: 'Grid Locator Finder', url: 'https://chromewebstore.google.com/detail/9m2pju-grid-locator-finde/opocamnikdeoebpcbogdknbghccmjkph' },
+                    { title: 'Dipole Antenna Calculator', url: 'https://chromewebstore.google.com/detail/9m2pju-dipole-antenna-cal/iklplamejpfkgieblpaclaabiejnbafe' },
+                    { title: 'Resonance Calculator', url: 'https://chromewebstore.google.com/detail/9m2pju-resonance-calculat/fokgpfondiefjnphpgahkajlfcabfofk' },
+                    { title: 'IPv4 Calculator', url: 'https://chromewebstore.google.com/detail/9m2pju-ipv4-calculator/ijljnlkjnobaneiemneankjnlbecblaf' },
+                    { title: 'Classic Cipher Tools', url: 'https://chromewebstore.google.com/detail/9m2pju-classic-cipher-too/pmbbopgijiifidlifmdndfccfkoiaeki' },
+                    { title: 'Mils to Degrees Converter', url: 'https://chromewebstore.google.com/detail/9m2pju-mils-to-degrees-co/phcpaolmkeecaifbhgfchpdoohabkiok' },
+                    { title: 'Islamic Prayer Times', url: 'https://chromewebstore.google.com/detail/9m2pju-islamic-prayer-tim/adkbafocihfgahcljfojhiijnfooaijd' },
+                    { title: 'Easy Recipe Finder', url: 'https://chromewebstore.google.com/detail/9m2pju-easy-recipe-finder/bhbbdfnfhbclpbnejnbphjacfbmdhfgg' },
+                    { title: 'Drain Calculator', url: 'https://chromewebstore.google.com/detail/9m2pju-drain-calculator/igcgilmlfmlkoihniaanfalhmafdfmci' },
+                    { title: 'SWR Calculator', url: 'https://chromewebstore.google.com/detail/9m2pju-swr-calculator/khjenibbecohckjgdaiiahjnfaiofbnh' },
+                    { title: 'Quran Verse of the Day', url: 'https://chromewebstore.google.com/detail/9m2pju-quran-verse-of-the/bmneghcpmfbjljfmikhalmkhdfdjikgf' },
+                    { title: 'Enigma Machine Simulator', url: 'https://chromewebstore.google.com/detail/9m2pju-enigma-machine-sim/oenollebibdpomcdjekihmdmhhkacgmn' },
+                    { title: 'Recharge Calculator', url: 'https://chromewebstore.google.com/detail/9m2pju-recharge-calculato/ecjhheflpcnadmkoicfboeghjffafpmj' },
+                    { title: 'Malaysia Electricity Bill', url: 'https://chromewebstore.google.com/detail/9m2pju-malaysia-electrici/boicnijdhffipkkhnmpaeilhdpjhjfda' },
+                    { title: 'Text to Morse Code', url: 'https://chromewebstore.google.com/detail/9m2pju-text-to-morse-code/lnhebbefphjolddankpehdeaibiimaei' },
+                    { title: 'RSA Key Generator', url: 'https://chromewebstore.google.com/detail/9m2pju-rsa-key-generator/ackoegabgdkgooogibcbbfjncfbjlheg' },
+                ]
+            }
+        ];
+
+        const contentDiv = document.getElementById('content');
+
+        categories.forEach(category => {
+            const section = document.createElement('div');
+            section.className = 'category-section';
+
+            const h2 = document.createElement('h2');
+            h2.textContent = category.title;
+            section.appendChild(h2);
+
+            const grid = document.createElement('div');
+            grid.className = 'links-grid';
+
+            category.links.forEach(link => {
+                const a = document.createElement('a');
+                a.href = link.url;
+                a.className = 'link-card';
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+
+                const info = document.createElement('div');
+                info.className = 'link-info';
+
+                const titleSpan = document.createElement('span');
+                titleSpan.className = 'link-title';
+                titleSpan.textContent = link.title;
+
+                const urlSpan = document.createElement('span');
+                urlSpan.className = 'link-url';
+                try {
+                    urlSpan.textContent = new URL(link.url).hostname;
+                } catch (e) {
+                    urlSpan.textContent = link.url;
+                }
+
+                info.appendChild(titleSpan);
+                info.appendChild(urlSpan);
+
+                const arrow = document.createElement('div');
+                arrow.className = 'link-arrow';
+                arrow.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>`;
+
+                a.appendChild(info);
+                a.appendChild(arrow);
+                grid.appendChild(a);
+            });
+
+            section.appendChild(grid);
+            contentDiv.appendChild(section);
+        });
+    </script>
 </body>
 
 </html>
