@@ -71,16 +71,6 @@ The directory organizes 40+ tools into intuitive sections:
 
 ---
 
-## 🚀 Deployment
-
-This project is hosted on **GitHub Pages**.
-
-1.  **Source**: `/docs` folder (Main Branch).
-2.  **Domain**: CNAME configured for `projects.hamradio.my`.
-3.  **Updates**: Simply push changes to `main`; no build script required.
-
----
-
 ## 👨‍💻 Author
 
 **9M2PJU**
